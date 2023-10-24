@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentContainer
 import androidx.fragment.app.FragmentContainerView
 
 class MainActivity : AppCompatActivity() {
-    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,12 +20,13 @@ class MainActivity : AppCompatActivity() {
         // Attach an instance of ImageDisplayFragment using factory method
         val imageDisplayFragment = ImageDisplayFragment.newInstance(imageArray)
 
-        if(supportFragmentManager.findFragmentById(R.id.fragmentContainerView)!is ImageDisplayFragment)
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentContainerView,imageDisplayFragment)
-            .addToBackStack(null)
-            .setReorderingAllowed(true)
-            .commit()
+        if(supportFragmentManager.findFragmentById(R.id.fragmentContainerView)!is ImageDisplayFragment) {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragmentContainerView, imageDisplayFragment)
+                .addToBackStack(null)
+                .setReorderingAllowed(true)
+                .commit()
+        }
     }
 
     fun imageSelected(itemId:Int){
